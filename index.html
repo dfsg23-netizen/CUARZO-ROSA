@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cuarzo Rosa · Bolsos</title>
+<meta name="description" content="Catálogo de bolsos Cuarzo Rosa. Elige tus favoritos y haz tu pedido por WhatsApp.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%23E6B3AD'/%3E%3Cpath d='M16 23l-6-6a4 4 0 016-5 4 4 0 016 5z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================
+   ESTILOS  ·  Paleta tomada del logo de Cuarzo Rosa
+   Para cambiar los colores de toda la página, edita solo
+   los valores de esta sección (:root).
+   ========================================================== */
+:root{
+  --crema:#FBF1EA;        /* fondo principal (el beige rosado del logo) */
+  --crema-2:#F5E2D8;      /* fondo de fotos y detalles suaves */
+  --rosa:#E6B3AD;         /* rosa cuarzo */
+  --oro:#B97F68;          /* dorado rosado */
+  --oro-oscuro:#8F5A47;   /* dorado rosado profundo (botones, enlaces) */
+  --tinta:#4A2F29;        /* texto principal */
+  --suave:#7D5C53;        /* texto secundario */
+  --linea:#EBD3C7;        /* bordes finos */
+  --titulos:"Cormorant Garamond", "Cormorant", Georgia, serif;
+  --texto:"Jost", "Helvetica Neue", Arial, sans-serif;
+  --script:"Pinyon Script", "Snell Roundhand", cursive;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--crema);color:var(--tinta);font:300 16px/1.6 var(--texto);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--oro-oscuro);outline-offset:3px}
+.oculto{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* Texto con degradado dorado rosado (solo para el nombre de la marca) */
+.oro{background:linear-gradient(115deg,#8F5A47 0%,#D9A58F 35%,#B97F68 60%,#E8BBA9 85%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- Barra superior ---------- */
+.barra{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;
+  padding:14px clamp(16px,4vw,48px);background:rgba(251,241,234,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
+.marca-mini{font-family:var(--titulos);font-size:1.4rem;font-weight:500;letter-spacing:.14em;text-decoration:none}
+.marca-mini span{font-family:var(--script);letter-spacing:0;font-size:1.6rem;margin-left:.2em}
+.btn-carrito{display:flex;align-items:center;gap:10px;background:none;border:1px solid var(--oro);border-radius:999px;padding:8px 18px;transition:background .2s}
+.btn-carrito:hover{background:var(--crema-2)}
+.contador{min-width:24px;height:24px;border-radius:12px;background:var(--oro-oscuro);color:#fff;font-size:.8rem;display:grid;place-items:center;padding:0 6px}
+
+/* ---------- Portada ---------- */
+.portada{text-align:center;padding:clamp(56px,12vw,130px) 20px clamp(40px,8vw,80px)}
+.portada h1{font-family:var(--titulos);font-weight:500;font-size:clamp(3.2rem,13vw,8rem);letter-spacing:.06em;line-height:1}
+.portada h1 em{display:block;font-family:var(--script);font-style:normal;font-weight:400;letter-spacing:0;
+  font-size:.62em;margin-top:-.12em;margin-left:1.4em;color:var(--rosa);filter:saturate(1.1) brightness(.92)}
+.portada p{margin:28px auto 0;max-width:30ch;color:var(--suave);font-size:1.05rem}
+.portada a{display:inline-block;margin-top:28px;color:var(--oro-oscuro);text-decoration:none;border-bottom:1px solid var(--oro);padding-bottom:3px}
+
+/* ---------- Catálogo ---------- */
+.catalogo{padding:0 clamp(16px,4vw,48px) 90px;max-width:1280px;margin:0 auto}
+.catalogo h2{font-family:var(--titulos);font-weight:500;font-size:2rem;margin-bottom:28px}
+.rejilla{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 14px}
+@media(min-width:720px){.rejilla{grid-template-columns:repeat(3,1fr);gap:44px 28px}}
+@media(min-width:1080px){.rejilla{grid-template-columns:repeat(4,1fr)}}
+.foto{aspect-ratio:4/5;background:var(--crema-2);border-radius:4px;overflow:hidden;display:grid;place-items:center;text-align:center;color:var(--suave)}
+.foto img{width:100%;height:100%;object-fit:cover}
+.foto.vacia{font-family:var(--titulos);font-size:1.1rem;padding:12px}   /* marcador cuando falta la foto */
+.tarjeta h3{font-family:var(--titulos);font-weight:500;font-size:1.3rem;margin-top:14px;line-height:1.2}
+.ref{font-size:.82rem;color:var(--suave);margin-top:2px}
+.precio{margin-top:6px;font-weight:400}
+.colores{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.color{border:1px solid var(--linea);background:none;border-radius:999px;padding:2px 12px;font-size:.85rem}
+.color[aria-pressed="true"]{border-color:var(--oro-oscuro);background:var(--oro-oscuro);color:#fff}
+.agregar{margin-top:14px;width:100%;padding:10px;background:none;border:1px solid var(--oro-oscuro);border-radius:4px;color:var(--oro-oscuro);transition:background .2s,color .2s}
+.agregar:hover,.agregar.listo{background:var(--oro-oscuro);color:#fff}
+
+/* ---------- Carrito (panel lateral) ---------- */
+.velo{position:fixed;inset:0;background:rgba(74,47,41,.35);opacity:0;pointer-events:none;transition:opacity .25s;z-index:30}
+.panel{position:fixed;top:0;right:0;height:100%;width:min(430px,100%);background:var(--crema);z-index:31;display:flex;flex-direction:column;
+  transform:translateX(100%);transition:transform .3s ease;box-shadow:-8px 0 30px rgba(74,47,41,.12)}
+body.abierto .velo{opacity:1;pointer-events:auto}
+body.abierto .panel{transform:none}
+.panel header{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--linea)}
+.panel h2{font-family:var(--titulos);font-weight:500;font-size:1.7rem}
+.cerrar{background:none;border:0;font-size:1.8rem;line-height:1;padding:4px 8px}
+.lista{flex:1;overflow-y:auto;padding:8px 22px}
+.vacio{padding:40px 0;text-align:center;color:var(--suave)}
+.item{display:grid;grid-template-columns:64px 1fr auto;gap:14px;padding:16px 0;border-bottom:1px solid var(--linea);align-items:start}
+.item .foto{aspect-ratio:1;border-radius:3px;font-size:0}
+.item b{font-family:var(--titulos);font-weight:500;font-size:1.1rem;display:block;line-height:1.2}
+.item small{display:block;color:var(--suave)}
+.cant{display:inline-flex;align-items:center;border:1px solid var(--linea);border-radius:999px;margin-top:8px}
+.cant button{background:none;border:0;width:32px;height:30px;font-size:1.1rem}
+.cant span{min-width:22px;text-align:center}
+.quitar{background:none;border:0;color:var(--suave);font-size:.82rem;text-decoration:underline;margin-top:6px;display:block;margin-left:auto}
+.pie{padding:18px 22px 22px;border-top:1px solid var(--linea)}
+.fila{display:flex;justify-content:space-between;color:var(--suave)}
+.total{display:flex;justify-content:space-between;font-family:var(--titulos);font-size:1.6rem;margin:6px 0 14px}
+.pie label{font-size:.85rem;color:var(--suave)}
+.pie input{width:100%;margin:4px 0 14px;padding:10px 12px;border:1px solid var(--linea);border-radius:4px;background:#fff8f4;font:inherit}
+.pedir{width:100%;padding:14px;background:var(--oro-oscuro);color:#fff;border:0;border-radius:4px;font-weight:400;letter-spacing:.02em}
+.pedir:hover{background:var(--tinta)}
+.aviso{min-height:1.4em;margin-top:8px;font-size:.88rem;color:#9a3d3d;text-align:center}
+footer{text-align:center;padding:36px 20px;border-top:1px solid var(--linea);color:var(--suave);font-size:.9rem}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+
+<body>
+<header class="barra">
+  <a class="marca-mini oro" href="#">CUARZO<span>Rosa</span></a>
+  <button class="btn-carrito" id="abrirCarrito" aria-label="Ver carrito">
+    Carrito <span class="contador" id="contador" aria-live="polite">0</span>
+  </button>
+</header>
+
+<section class="portada">
+  <h1 class="oro">CUARZO<em>Rosa</em></h1>
+  <p>Bolsos para llevar contigo. Elige los tuyos y pídelos por WhatsApp.</p>
+  <a href="#catalogo">Ver catálogo</a>
+</section>
+
+<main class="catalogo" id="catalogo">
+  <h2>Catálogo</h2>
+  <div class="rejilla" id="rejilla"></div>
+</main>
+
+<footer>Cuarzo Rosa · Pedidos por WhatsApp</footer>
+
+<!-- Carrito -->
+<div class="velo" id="velo"></div>
+<aside class="panel" id="panel" aria-label="Carrito de compras" aria-hidden="true">
+  <header><h2>Tu carrito</h2><button class="cerrar" id="cerrar" aria-label="Cerrar carrito">×</button></header>
+  <div class="lista" id="lista"></div>
+  <div class="pie">
+    <div class="fila"><span>Subtotal</span><span id="subtotal">$0</span></div>
+    <div class="total"><span>Total</span><span id="total">$0</span></div>
+    <label for="nombre">Tu nombre (opcional)</label>
+    <input id="nombre" type="text" autocomplete="name" placeholder="Para identificar tu pedido">
+    <button class="pedir" id="pedir">Pedir por WhatsApp</button>
+    <p class="aviso" id="aviso" role="alert"></p>
+  </div>
+</aside>
+
+<script>
+/* ==========================================================
+   1. CONFIGURACIÓN  (aquí es donde editas lo importante)
+   ========================================================== */
+
+// Número de WhatsApp de la empresa: código de país + número, SOLO dígitos (sin +, espacios ni guiones).
+// Colombia = 57. Ejemplo: +57 315 7741682  →  "573157741682"
+const WHATSAPP_NUMERO = "573157741682";
+
+// Saludo con el que empieza el mensaje del pedido
+const SALUDO = "Hola Cuarzo Rosa, quiero hacer este pedido:";
+
+/* ==========================================================
+   2. PRODUCTOS  (edita precios, referencias, nombres y fotos)
+   ----------------------------------------------------------
+   sku     → referencia única (no repetir entre productos)
+   nombre  → nombre que ve el cliente
+   precio  → número SIN puntos ni símbolos (89900 = $89.900)
+   imagen  → ruta de la foto dentro de la carpeta "imagenes"
+   colores → lista de colores disponibles. Si el bolso es de
+             un solo color déjalo vacío: []
+   Para agregar un bolso, copia una línea completa y cámbiala.
+   Para quitarlo, borra su línea.
+   ========================================================== */
+const PRODUCTOS = [
+  { sku: "CR-001", nombre: "Bolso modelo 01", precio: 89900, imagen: "imagenes/bolso-01.jpg", colores: ["Rosa", "Beige", "Negro"] },
+  { sku: "CR-002", nombre: "Bolso modelo 02", precio: 99900, imagen: "imagenes/bolso-02.jpg", colores: ["Rosa", "Negro"] },
+  { sku: "CR-003", nombre: "Bolso modelo 03", precio: 109900, imagen: "imagenes/bolso-03.jpg", colores: [] },
+  { sku: "CR-004", nombre: "Bolso modelo 04", precio: 119900, imagen: "imagenes/bolso-04.jpg", colores: ["Rosa", "Beige", "Negro"] },
+  { sku: "CR-005", nombre: "Bolso modelo 05", precio: 129900, imagen: "imagenes/bolso-05.jpg", colores: ["Rosa", "Negro"] },
+  { sku: "CR-006", nombre: "Bolso modelo 06", precio: 139900, imagen: "imagenes/bolso-06.jpg", colores: [] },
+  { sku: "CR-007", nombre: "Bolso modelo 07", precio: 149900, imagen: "imagenes/bolso-07.jpg", colores: ["Rosa", "Beige", "Negro"] },
+  { sku: "CR-008", nombre: "Bolso modelo 08", precio: 159900, imagen: "imagenes/bolso-08.jpg", colores: ["Rosa", "Negro"] },
+  { sku: "CR-009", nombre: "Bolso modelo 09", precio: 89900, imagen: "imagenes/bolso-09.jpg", colores: [] },
+  { sku: "CR-010", nombre: "Bolso modelo 10", precio: 99900, imagen: "imagenes/bolso-10.jpg", colores: ["Rosa", "Beige", "Negro"] },
+  { sku: "CR-011", nombre: "Bolso modelo 11", precio: 109900, imagen: "imagenes/bolso-11.jpg", colores: ["Rosa", "Negro"] },
+  { sku: "CR-012", nombre: "Bolso modelo 12", precio: 119900, imagen: "imagenes/bolso-12.jpg", colores: [] },
+  { sku: "CR-013", nombre: "Bolso modelo 13", precio: 129900, imagen: "imagenes/bolso-13.jpg", colores: ["Rosa", "Beige", "Negro"] },
+  { sku: "CR-014", nombre: "Bolso modelo 14", precio: 139900, imagen: "imagenes/bolso-14.jpg", colores: ["Rosa", "Negro"] },
+  { sku: "CR-015", nombre: "Bolso modelo 15", precio: 149900, imagen: "imagenes/bolso-15.jpg", colores: [] },
+  { sku: "CR-016", nombre: "Bolso modelo 16", precio: 159900, imagen: "imagenes/bolso-16.jpg", colores: ["Rosa", "Beige", "Negro"] },
+  { sku: "CR-017", nombre: "Bolso modelo 17", precio: 89900, imagen: "imagenes/bolso-17.jpg", colores: ["Rosa", "Negro"] },
+  { sku: "CR-018", nombre: "Bolso modelo 18", precio: 99900, imagen: "imagenes/bolso-18.jpg", colores: [] },
+  { sku: "CR-019", nombre: "Bolso modelo 19", precio: 109900, imagen: "imagenes/bolso-19.jpg", colores: ["Rosa", "Beige", "Negro"] },
+  { sku: "CR-020", nombre: "Bolso modelo 20", precio: 119900, imagen: "imagenes/bolso-20.jpg", colores: ["Rosa", "Negro"] },
+  { sku: "CR-021", nombre: "Bolso modelo 21", precio: 129900, imagen: "imagenes/bolso-21.jpg", colores: [] },
+  { sku: "CR-022", nombre: "Bolso modelo 22", precio: 139900, imagen: "imagenes/bolso-22.jpg", colores: ["Rosa", "Beige", "Negro"] },
+  { sku: "CR-023", nombre: "Bolso modelo 23", precio: 149900, imagen: "imagenes/bolso-23.jpg", colores: ["Rosa", "Negro"] },
+  { sku: "CR-024", nombre: "Bolso modelo 24", precio: 159900, imagen: "imagenes/bolso-24.jpg", colores: [] },
+  { sku: "CR-025", nombre: "Bolso modelo 25", precio: 89900, imagen: "imagenes/bolso-25.jpg", colores: ["Rosa", "Beige", "Negro"] },
+  { sku: "CR-026", nombre: "Bolso modelo 26", precio: 99900, imagen: "imagenes/bolso-26.jpg", colores: ["Rosa", "Negro"] },
+];
+
+/* ==========================================================
+   3. LÓGICA DEL CARRITO  (no necesitas tocar de aquí hacia abajo)
+   ========================================================== */
+const $ = id => document.getElementById(id);
+const CLAVE = "cuarzo-rosa-carrito";
+const dinero = n => new Intl.NumberFormat("es-CO", {style:"currency", currency:"COP", maximumFractionDigits:0})
+  .format(n).replace(/\u00a0/g, " ");
+const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+let carrito = [];                // [{sku, color, cant}]
+const colorElegido = {};         // color seleccionado en cada tarjeta
+
+// Guardar y leer el carrito en el navegador (localStorage)
+function guardar(){ try{ localStorage.setItem(CLAVE, JSON.stringify(carrito)); }catch(e){} }
+function cargar(){
+  try{ carrito = JSON.parse(localStorage.getItem(CLAVE)) || []; }catch(e){ carrito = []; }
+  // Descarta productos que ya no existen en el catálogo
+  carrito = carrito.filter(i => PRODUCTOS.some(p => p.sku === i.sku) && i.cant > 0);
+}
+const buscar = sku => PRODUCTOS.find(p => p.sku === sku);
+
+// Foto del producto; si no existe el archivo, muestra un marcador
+function foto(p, chico){
+  return `<div class="foto"><img src="${esc(p.imagen)}" alt="${esc(p.nombre)}" loading="lazy"
+    onerror="this.parentNode.classList.add('vacia');this.parentNode.innerHTML='${chico ? '' : 'Foto de<br>' + esc(p.nombre)}'"></div>`;
+}
+
+// Dibuja el catálogo
+function dibujarCatalogo(){
+  $("rejilla").innerHTML = PRODUCTOS.map(p => {
+    if(p.colores.length) colorElegido[p.sku] = p.colores[0];
+    const pills = p.colores.length
+      ? `<div class="colores" role="group" aria-label="Color">` + p.colores.map((c,i) =>
+          `<button class="color" data-sku="${p.sku}" data-color="${esc(c)}" aria-pressed="${i===0}">${esc(c)}</button>`).join("") + `</div>` : "";
+    return `<article class="tarjeta">${foto(p)}
+      <h3>${esc(p.nombre)}</h3>
+      <div class="ref">Ref. ${esc(p.sku)}</div>
+      <div class="precio">${dinero(p.precio)}</div>${pills}
+      <button class="agregar" data-agregar="${p.sku}">Agregar al carrito</button></article>`;
+  }).join("");
+}
+
+// Dibuja el carrito y recalcula totales
+function dibujarCarrito(){
+  const total = carrito.reduce((s,i) => s + buscar(i.sku).precio * i.cant, 0);
+  const unidades = carrito.reduce((s,i) => s + i.cant, 0);
+  $("contador").textContent = unidades;
+  $("subtotal").textContent = $("total").textContent = dinero(total);
+  $("lista").innerHTML = carrito.length ? carrito.map((i,n) => {
+    const p = buscar(i.sku);
+    return `<div class="item">${foto(p,true)}
+      <div><b>${esc(p.nombre)}</b><small>Ref. ${esc(p.sku)}${i.color ? " · " + esc(i.color) : ""}</small>
+        <small>${dinero(p.precio)}</small>
+        <div class="cant"><button data-menos="${n}" aria-label="Quitar una unidad">−</button><span>${i.cant}</span><button data-mas="${n}" aria-label="Agregar una unidad">+</button></div></div>
+      <div><b>${dinero(p.precio * i.cant)}</b><button class="quitar" data-quitar="${n}">Quitar</button></div></div>`;
+  }).join("") : `<p class="vacio">Tu carrito está vacío.<br>Agrega un bolso desde el catálogo.</p>`;
+  guardar();
+}
+
+function agregar(sku){
+  const color = colorElegido[sku] || "";
+  const existente = carrito.find(i => i.sku === sku && i.color === color);
+  existente ? existente.cant++ : carrito.push({sku, color, cant:1});
+  dibujarCarrito();
+}
+
+function abrir(si){
+  document.body.classList.toggle("abierto", si);
+  $("panel").setAttribute("aria-hidden", !si);
+  if(si) $("cerrar").focus(); else $("abrirCarrito").focus();
+}
+
+// Construye el mensaje de WhatsApp y abre el chat
+function enviarPedido(){
+  if(!carrito.length){ $("aviso").textContent = "Tu carrito está vacío. Agrega al menos un producto."; return; }
+  $("aviso").textContent = "";
+  const nombre = $("nombre").value.trim();
+  const lineas = carrito.map((i,n) => {
+    const p = buscar(i.sku);
+    return `${n+1}. ${p.nombre}\n   Ref: ${p.sku}${i.color ? "\n   Color: " + i.color : ""}\n   ${i.cant} x ${dinero(p.precio)} = ${dinero(p.precio * i.cant)}`;
+  });
+  const total = carrito.reduce((s,i) => s + buscar(i.sku).precio * i.cant, 0);
+  const mensaje = [SALUDO, nombre ? "Cliente: " + nombre : "", "", ...lineas, "", "TOTAL A PAGAR: " + dinero(total)]
+    .filter((l,i,a) => !(l === "" && i === 1 && !nombre)).join("\n");
+  const url = "https://wa.me/" + WHATSAPP_NUMERO + "?text=" + encodeURIComponent(mensaje);
+  window.open(url, "_blank") || (window.location.href = url);
+}
+
+// Eventos (un solo "oyente" para todos los botones)
+document.addEventListener("click", e => {
+  const b = e.target.closest("button"); if(!b) return;
+  if(b.dataset.agregar){ agregar(b.dataset.agregar); b.classList.add("listo"); b.textContent = "Agregado ✓";
+    setTimeout(() => { b.classList.remove("listo"); b.textContent = "Agregar al carrito"; }, 1200); }
+  else if(b.dataset.color){ colorElegido[b.dataset.sku] = b.dataset.color;
+    b.parentNode.querySelectorAll(".color").forEach(x => x.setAttribute("aria-pressed", x === b)); }
+  else if(b.dataset.mas){ carrito[b.dataset.mas].cant++; dibujarCarrito(); }
+  else if(b.dataset.menos){ const i = carrito[b.dataset.menos]; if(--i.cant < 1) carrito.splice(b.dataset.menos,1); dibujarCarrito(); }
+  else if(b.dataset.quitar){ carrito.splice(b.dataset.quitar,1); dibujarCarrito(); }
+});
+$("abrirCarrito").onclick = () => abrir(true);
+$("cerrar").onclick = $("velo").onclick = () => abrir(false);
+$("pedir").onclick = enviarPedido;
+document.addEventListener("keydown", e => { if(e.key === "Escape") abrir(false); });
+
+cargar(); dibujarCatalogo(); dibujarCarrito();
+</script>
+</body>
+</html>
